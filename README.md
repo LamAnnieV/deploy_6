@@ -51,18 +51,21 @@ git merge second
 git push --all
 ```
 
+
+
+
 **GIT - update DATABASE_URL**
 
-```
-git switch second
+```git switch second
 # For the files app.py, database.py, load_data.py update the database endpoint see step #4 below
 git commit -a
 git push --all
 # Run Jenkins build
 # After a successful build
 git switch main
-git merge second
-```
+git merge second```
+
+
 
 **GIT - update DATABASE_URL**
 
