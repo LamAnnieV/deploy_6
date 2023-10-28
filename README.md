@@ -10,7 +10,6 @@ Use Jenkins agent to spin up the main infrastructure and deploy the banking appl
 
 Previously, we built and tested the application on one server before the Jenkins agent SSHed into a second server to deploy the application.  For this deployment, a Jenkins agent uses Terraform init, plan, and apply the main infrastructure.  In addition, deploy the application.
 
-
 ## Step #1 Diagram the VPC Infrastructure and the CI/CD Pipeline
 
 ![Deployment Diagram](Images/Deployment_Pipeline.png)
@@ -25,6 +24,7 @@ GitHub serves as the repository from which Jenkins retrieves files to build, tes
 In order for the EC2 instance, where Jenkins is installed, to access the repository, you need to generate a token from GitHub and then provide it to the EC2 instance.
 
 [Generate GitHub Token](https://github.com/LamAnnieV/GitHub/blob/main/Generate_GitHub_Token.md)
+
 
 **GIT - Jenkins Agent Infrastructure**
 
@@ -51,31 +51,25 @@ git merge second
 git push --all
 ```
 
+**GIT - Banking Application Infrastructure**
 
-
-
-**GIT - update DATABASE_URL**
-
-```git switch second
-# For the files app.py, database.py, load_data.py update the database endpoint see step #4 below
-git commit -a
-git push --all
-# Run Jenkins build
-# After a successful build
-git switch main
-git merge second```
-
-
-
-**GIT - update DATABASE_URL**
-
+```
+git switch second
 #Run Jenkins build
 git switch main
+# In the directory "initTerraform", create files main.tf, terraform.tfvars, variables.tf, and deploy.sh
+terraform init
+terraform validate
+terraform plan
+terraform apply
+#After the successful creation of the Application Infrastructure
+terraform destroy
+git add main.tf terraform.tfvars variables.tf deploy.sh
+git commit -a
+#make a file .gitignore and put all the names of the files for git to ignore
+git switch main
 git merge second
-git push
-
-
-
+git push --all
 ```
 
 ## Step #3 Jenkins
@@ -90,7 +84,7 @@ Use Terraform to spin up the [Jenkins Agent Infrastructure]{jenkinsTerraform/mai
 
 **Setup Jenkins and Jenkins node**
 
-Instructions on how to configure Jenkins
+Configure Jenkins
 
 Instructions on how to configure the [Jenkin node](https://github.com/LamAnnieV/Jenkins/blob/main/jenkins_node.md)
 
