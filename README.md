@@ -51,6 +51,17 @@ git merge second
 git push --all
 ```
 
+**GIT - update DATABASE_URL**
+
+```
+git switch second
+# For the files app.py, database.py, load_data.py update the database endpoint see step #4 below
+git commit -a
+git switch main
+git merge second
+git push --all
+```
+
 **GIT - Banking Application Infrastructure**
 
 ```
@@ -118,6 +129,23 @@ For each of the Regions (US-east-1 and US-west-2), we want:
 To automate the construction of the banking application infrastructure, the instance with the Jenkins agent and Terraform will execute the Terraform scripts. The [main.tf](Images/main.tf) and [variables.tf](Imaages/variables.tf) files, define the resources to be created and declare variables. Additionally, Terraform enables the execution of a [deploy.sh](initTerraform/deploy.sh) that  includes installing dependencies and deploying the banking application. 
 
 Jenkins Build:  In Jenkins create a build "deploy_6" to run the file Jenkinsfilev for the Banking application from GitHub Repository [https://github.com/LamAnnieV/deploy_6.git](https://github.com/LamAnnieV/deploy_6.git) and run the build.  This build consists of:  The "Build", the "Test", the "Clean", (Terraform) "Init", (Terraform) "Plan", and (Terraform) "Apply" stages.  The "Apply" stage also includes deploying the application.   
+
+
+**Results:**
+
+Success Build for all Stages
+
+![Image](Images/Jenkins.png)
+
+The application was launched from all four instances:
+
+![Image](Images/Lanch_1.png)
+![Image](Images/Lanch_2.png)
+![Image](Images/Lanch_3.png)
+![Image](Images/Lanch_4.png)
+
+
+
 
 ## Step #6 Configure Application Load Balancer to distribute the workload
 
