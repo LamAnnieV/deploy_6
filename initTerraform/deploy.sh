@@ -12,14 +12,14 @@ sudo apt-get install -y libmysqlclient-dev
 sudo apt-get install -y python3.7-dev
 
 
-# Create and activate virtual environment
+# Create and activate the virtual environment
 python3.7 -m venv test
 source test/bin/activate
 git clone https://github.com/LamAnnieV/deploy_6.git
 cd deploy_6
+# Install required packages in the virtual environment
 pip install pip --upgrade
 pip install -r requirements.txt
-# Install required packages in the virtual environment
 pip install mysqlclient
 pip install gunicorn
 python database.py
