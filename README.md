@@ -104,13 +104,17 @@ Instructions on how to configure [AWS access and secret keys](https://github.com
 Instructions on how to install the [Pipleline Keep Running Step](https://github.com/LamAnnieV/Jenkins/blob/main/Install_Pipeline_Keep_Running_Step.md)
 
 
-## Step #4 Configure Amazon's Relational Database Service(RDS) to manage the MySQL database in all four instances
+## Step #4 Configure Amazon's Relational Database Service (RDS) 
+
+RDS is used to manage the MySQL database in all four instances in this case.  It can automate backups and sync the data across regions, availability zones, and instances.  It also ensures security and reliability
 
 How to [configure RDS database](https://github.com/LamAnnieV/AWS_RDS_Database/blob/main/Create_AWS_RDS_DB).
 
 Update the section in yellow, green, and blue of the Database endpoint in the following files:  app.py, database.py, and load_data.py
 
-![DATABASE_URL](Images/Database_URL.png)
+![DATABASE_URL](Images/Endpoint.png)
+
+![Images](Images/DB_name_URL.png)
 
 
 ## Step #5 Use Jenkins Agent to execute the Terraform scripts to create the Banking Application Infrastructure
@@ -130,7 +134,6 @@ To automate the construction of the banking application infrastructure, the inst
 
 Jenkins Build:  In Jenkins create a build "deploy_6" to run the file Jenkinsfilev for the Banking application from GitHub Repository [https://github.com/LamAnnieV/deploy_6.git](https://github.com/LamAnnieV/deploy_6.git) and run the build.  This build consists of:  The "Build", the "Test", the "Clean", (Terraform) "Init", (Terraform) "Plan", and (Terraform) "Apply" stages.  The "Apply" stage also includes deploying the application.   
 
-
 **Results:**
 
 Success Build for all Stages
@@ -144,18 +147,19 @@ The application was launched from all four instances:
 ![Images](Images/Launch_3.png)
 ![Images](Images/Launch_4.png)
 
-
-
-
 ## Step #6 Configure Application Load Balancer to distribute the workload
 
 How to configure[ Application Load Balancer](https://github.com/LamAnnieV/AWS_Services/blob/main/Application_Load_Balancer.md)
 
 ## Issue(s)
 
-Most of the challenges revolved around the development process, including writing and testing code, identifying bugs, and debugging code within the Terraform files, as well as the edits made in the Jenkinsfiles and setup files
+Most of the challenges revolved around Terraform, not having enough AWS resources and user error
 
-There was an issue with deplying the 'Deploy_5v2' build. In the script, a line is responsible for cloning the repository onto the application server, with the expectation that it replicates the second branch of the repository. Unfortunately, there was an inconsistency observed with the 'home.html' file, located in a subfolder. The cloned 'home.html' file in the application server did not match the version in the second branch of the repository; instead, it reflected the 'main' branch. However, after merging the second branch into the main branch, the launched webpage correctly reflected the changes made to 'home.html'.
+1.  When updating the database endpoint in the files, had to try two different options to figure out which one was the actual database name DB instance identifier or initial database name.  It was the initial database name.  
+2. When configuring the RDS, port 3306 was initially not configured, which caused an unsuccessful test stage 
+3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.{alias} for each block related to that provide.  The other blocks will default to the main provider.
+4.  Terraform was giving an error that there was not enough CPU or internet gateways available.  Had to terminate unused resources, before re-running Terraform
+5.  When configuring the application load balancer, selecting the correct VPC was missed.  Had to recreate the load balancer 
 
 ## Conclusion
 
