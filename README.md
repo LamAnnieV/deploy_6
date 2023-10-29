@@ -172,7 +172,7 @@ Most of the challenges revolved around Terraform, not having enough AWS resource
 
 1.  When updating the database endpoint in the files, had to try two different options to figure out which one was the actual database name DB instance identifier or initial database name.  It was the initial database name.  
 2. When configuring the RDS, port 3306 was initially not configured, which caused an unsuccessful test stage 
-3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.{alias} for each block related to that provide.  The other blocks will default to the main provider.
+3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.<alias> for each block related to that provide.  The other blocks will default to the main provider.
 4.  Terraform was giving an error that there was not enough CPU or internet gateways available.  Had to terminate unused resources, before re-running Terraform
 5.  When configuring the application load balancer, selecting the correct VPC was missed.  Had to recreate the load balancer 
   
