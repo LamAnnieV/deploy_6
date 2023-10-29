@@ -1,4 +1,4 @@
-# Run a Jenkins Build for a Banking Application and Deploy it to a second instance using SSH
+# Run a Jenkins Build for a Banking Application that connects to a Jenkins agent to create the Banking Application Infrastructure and Deploy the application to two different regions
 
 October 28, 2023
 
