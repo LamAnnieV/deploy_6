@@ -91,7 +91,7 @@ Jenkins is used to automate the Build, Test, and Deploy the Banking Application.
 
 **Jenkins Agent Infrastructure**
 
-Use Terraform to spin up the [Jenkins Agent Infrastructure]{jenkinsTerraform/main.tf) to include the installs needed for the [Jenkins instance](jenkinsTerraform/installs1.sh) and the install needed for the [Jenkins agent instance](jenkinsTerraform/installs2.sh), which includes Terraform.
+Use Terraform to spin up the [Jenkins Agent Infrastructure](jenkinsTerraform/main.tf) to include the installs needed for the [Jenkins instance](jenkinsTerraform/installs1.sh) and the install needed for the [Jenkins agent instance](jenkinsTerraform/installs2.sh), which includes Terraform.
 
 **Setup Jenkins and Jenkins node**
 
@@ -114,6 +114,8 @@ How to [configure RDS database](https://github.com/LamAnnieV/AWS_RDS_Database/bl
 
 Update the section in yellow, green, and blue of the Database endpoint in the following files:  app.py, database.py, and load_data.py
 
+![DATABASE_URL](Images/Database_URL.png)
+
 ![DATABASE_URL](Images/Endpoint.png)
 
 ![Images](Images/DB_name.png)
@@ -134,7 +136,7 @@ For each of the Regions (US-east-1 and US-west-2), we want:
 ```
 To automate the construction of the banking application infrastructure, the instance with the Jenkins agent and Terraform will execute the Terraform scripts. The [main.tf](Images/main.tf) and [variables.tf](Imaages/variables.tf) files, define the resources to be created and declare variables. Additionally, Terraform enables the execution of a [deploy.sh](initTerraform/deploy.sh) that  includes installing dependencies and deploying the banking application. 
 
-Portion of the deploy.sh script that would deploy the application:
+The portion of the deploy.sh script that would deploy the application:
 
 ![image](Images/Deploy_script.png)
 
