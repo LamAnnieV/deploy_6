@@ -159,7 +159,12 @@ The application was launched from all four instances:
 
 The purpose of an Application Load Balancer (ALB) is to evenly distribute incoming web traffic to multiple servers or instances to ensure that the application remains available, responsive, and efficient. It directs traffic to different servers to prevent overload on any single server. If one server is down, it can redirect traffic to the servers that are still up and running.  This helps improve the performance, availability, and reliability of web applications, making sure users can access them without interruption, even if some servers have issues.
 
-How to configure[ Application Load Balancer](https://github.com/LamAnnieV/AWS_Services/blob/main/Application_Load_Balancer.md)
+How to configure [Application Load Balancer](https://github.com/LamAnnieV/AWS_Services/blob/main/Application_Load_Balancer.md)
+
+![Images](Images/Load_Balancer_East.png)
+
+![Images](Images/Load_Balancer_West.png)
+
 
 ## Issue(s)
 
