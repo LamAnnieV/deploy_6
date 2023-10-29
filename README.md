@@ -149,6 +149,8 @@ The application was launched from all four instances:
 
 ## Step #6 Configure Application Load Balancer to distribute the workload
 
+The purpose of an Application Load Balancer (ALB) is to evenly distribute incoming web traffic to multiple servers or instances to ensure that the application remains available, responsive, and efficient. It directs traffic to different servers to prevent overload on any single server. If one server is down, it can redirect traffic to the servers that are still up and running.  This helps improve the performance, availability, and reliability of web applications, making sure users can access them without interruption, even if some servers have issues.
+
 How to configure[ Application Load Balancer](https://github.com/LamAnnieV/AWS_Services/blob/main/Application_Load_Balancer.md)
 
 ## Issue(s)
@@ -160,16 +162,13 @@ Most of the challenges revolved around Terraform, not having enough AWS resource
 3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.{alias} for each block related to that provide.  The other blocks will default to the main provider.
 4.  Terraform was giving an error that there was not enough CPU or internet gateways available.  Had to terminate unused resources, before re-running Terraform
 5.  When configuring the application load balancer, selecting the correct VPC was missed.  Had to recreate the load balancer 
-
-## Conclusion
-
-As observed in the CloudWatch images, even when both servers were subjected to 'sudo stress-ng --matrix 1 -t 1m' while simultaneously running Jenkins builds, the CPU usage exceeded 20%, although it remained below 30%. This performance level is adequate as long as the servers are not consistently stressed, do not require more than 2 CPUs, and do not experience a substantial surge in requests. Nonetheless, it's advisable to explore options for additional resources as a precaution.
-
-In this deployment, two instances are employed: one for the Jenkins server and the other server is for the web tier. Both instances are placed in the public subnet, as they need to be accessible via the internet. The Jenkins server is accessible through port 8080 for utilizing the Jenkins GUI interface, while the application server is accessible by our banking customers through port 8000. Thus, both subnets must remain public for these connections to function as required.  However, if we pull out the application tier and database tier into their own server, then that server can be on the private subnet.
   
 ## Area(s) for Optimization:
 
 -  Enhance automation of the AWS Cloud Infrastructure by implementing Terraform modules.
+-  Using Auto Scaling Groups in conjunction with the ALB for dynamic scaling based on traffic load.
+-  Use Dockerfiles to deploy the application
+
 
 Note:  ChatGPT was used to enhance the quality and clarity of this documentation
   
