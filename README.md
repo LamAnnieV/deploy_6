@@ -114,7 +114,7 @@ Update the section in yellow, green, and blue of the Database endpoint in the fo
 
 ![DATABASE_URL](Images/Endpoint.png)
 
-![Images](Images/DB_name_URL.png)
+![Images](Images/DB_name.png)
 
 
 ## Step #5 Use Jenkins Agent to execute the Terraform scripts to create the Banking Application Infrastructure
