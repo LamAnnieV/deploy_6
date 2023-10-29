@@ -1,4 +1,4 @@
-# Run a Jenkins Build for a Banking Application that connects to a Jenkins agent to create the Banking Application Infrastructure and Deploy the application to two different regions
+# Deploy Banking Application across two Regions with a Jenkins Agent Infrastructure using Terraform 
 
 October 28, 2023
 
