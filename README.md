@@ -139,10 +139,10 @@ Success Build for all Stages
 
 The application was launched from all four instances:
 
-![Image](Images/Lanch_1.png)
-![Image](Images/Lanch_2.png)
-![Image](Images/Lanch_3.png)
-![Image](Images/Lanch_4.png)
+![Images](Images/Launch_1.png)
+![Images](Images/Launch_2.png)
+![Images](Images/Launch_3.png)
+![Images](Images/Launch_4.png)
 
 
 
