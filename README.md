@@ -95,6 +95,8 @@ Use Terraform to spin up the [Jenkins Agent Infrastructure]{jenkinsTerraform/mai
 
 **Setup Jenkins and Jenkins node**
 
+[Create](https://github.com/LamAnnieV/Create_EC2_Instance/blob/main/Create_Key_Pair.md) a Key Pair
+
 Configure Jenkins
 
 Instructions on how to configure the [Jenkin node](https://github.com/LamAnnieV/Jenkins/blob/main/jenkins_node.md)
