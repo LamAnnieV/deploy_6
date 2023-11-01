@@ -171,9 +171,9 @@ Amazon Route 53 is a scalable and highly available Domain Name System (DNS) web 
 
 How to configure Amazon DNS Service [Route 53](https://github.com/LamAnnieV/AWS_Services/blob/main/route_53.md)
 
-![Images](dns_name.png)
+![Images](Images/dns_name.png)
 
-![Images](dns_result.png)
+![Images](Images/dns_result.png)
 
 ## Issue(s)
 
