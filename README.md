@@ -165,6 +165,15 @@ How to configure [Application Load Balancer](https://github.com/LamAnnieV/AWS_Se
 
 ![Images](Images/Load_Balancer_West.png)
 
+## Step #7 Configure Amazon Route 53 DNS Service
+
+Amazon Route 53 is a scalable and highly available Domain Name System (DNS) web service provided by Amazon Web Services (AWS). It allows you to register domain names and manage their settings.  It efficiently routes incoming DNS requests to the appropriate resources.  In this case, it will be EC2 instances.  This helps distribute traffic and improve the availability and performance of the applications.  Route 53 can monitor the health of your resources and automatically route traffic away from failed resources to healthy ones. This is crucial for ensuring high availability and fault tolerance.  Route 53 can be used to create sophisticated traffic routing policies based on geographic location, latency, weighted distribution, and more. This enables you to optimize the user experience and control how traffic is distributed.
+
+How to configure Amazon DNS Service [Route 53](https://github.com/LamAnnieV/AWS_Services/blob/main/route_53.md)
+
+![Images](dns_name.png)
+
+![Images](dns_result.png)
 
 ## Issue(s)
 
@@ -172,9 +181,9 @@ Most of the challenges revolved around Terraform, not having enough AWS resource
 
 1.  When updating the database endpoint in the files, had to try two different options to figure out which one was the actual database name DB instance identifier or initial database name.  It was the initial database name.  
 2. When configuring the RDS, port 3306 was initially not configured, which caused an unsuccessful test stage 
-3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.<alias> for each block related to that provide.  The other blocks will default to the main provider.
+3.  How to create a two-region infrastructure with one main.tf.  It was simply giving an alias to the second provider, and inserting the provider = aws.<alias> for each block related to that provider.  The other blocks will default to the main provider. 
 4.  Terraform was giving an error that there was not enough CPU or internet gateways available.  Had to terminate unused resources, before re-running Terraform
-5.  When configuring the application load balancer, selecting the correct VPC was missed.  Had to recreate the load balancer 
+6.  When configuring the application load balancer, selecting the correct VPC was missed.  Had to recreate the load balancer 
   
 ## Area(s) for Optimization:
 
